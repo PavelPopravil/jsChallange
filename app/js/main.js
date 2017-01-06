@@ -1,9 +1,27 @@
-window.addEventListener('keydown', function(e) {
+const secondsHand = document.querySelector('.second-hand');
+const minutesHand = document.querySelector('.minutes-hand');
+const hoursHand = document.querySelector('.hours-hand');
 
-	const audio = document.querySelector('audio[data-key="' + e.keyCode + '"]');
-	const key = document.querySelector('.key[data-key="' + e.keyCode + '"]');
-	audio.play();
-	if (!audio) return;
-	key.classList.add('playing');
+function setTime() {
 
-});
+	const now = new Date;
+	const seconds = now.getSeconds();
+	const secondsDegrees = ((seconds / 60) * 360) + 90;
+
+	secondsHand.style.transform = "rotate(" + secondsDegrees + "deg)";
+
+	const minutes = now.getMinutes();
+	const minutesDegrees = ((minutes / 60) * 360) + 90;
+
+	minutesHand.style.transform = "rotate(" + minutesDegrees + "deg)";
+
+	const hours = now.getHours();
+	const hoursDegrees = ((hours / 12) * 360) + 90;
+
+	hoursHand.style.transform = "rotate(" + hoursDegrees + "deg)";
+
+
+}
+
+
+setInterval(setTime, 1000);

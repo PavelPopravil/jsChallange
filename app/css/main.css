@@ -147,7 +147,12 @@ textarea {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.container {
+.app {
+  background: #C4C4C4;
+  background-image: radial-gradient(50% 100%, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.03) 100%), -webkit-gradient(linear, right top, left top, from(rgba(255, 255, 255, 0.35)), color-stop(99%, #929292));
+  background-image: -webkit-radial-gradient(50% 100%, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.03) 100%), -webkit-linear-gradient(right, rgba(255, 255, 255, 0.35) 0%, #929292 99%);
+  background-image: radial-gradient(50% 100%, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.03) 100%), linear-gradient(to left, rgba(255, 255, 255, 0.35) 0%, #929292 99%);
+  background-blend-mode: normal,multiply;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -160,41 +165,36 @@ textarea {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100vh;
-  background: url(../img/bg.jpg) center no-repeat; }
+  min-height: 100vh; }
 
-.keys {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
+.clock {
+  width: 300px;
+  height: 300px;
+  border: 10px solid #fff;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  padding: 20px; }
 
-.key {
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 2px solid #000;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  width: 100px;
-  cursor: pointer;
-  -webkit-transition: all .7s ease;
-  transition: all .7s ease; }
-  .key.playing {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    border-color: #ffc600;
-    -webkit-box-shadow: 0 0 10px #ffc600;
-    box-shadow: 0 0 10px #ffc600; }
-  .key kbd {
-    font-size: 26px;
-    display: block;
-    text-transform: uppercase;
-    font-family: monospace; }
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateY(-3px);
+  -ms-transform: translateY(-3px);
+  transform: translateY(-3px); }
 
-.key-sound {
-  display: block;
-  color: #ffc600;
-  text-transform: uppercase;
-  font-size: 14px; }
+.hand {
+  position: absolute;
+  height: 6px;
+  width: 50%;
+  background-color: #fff;
+  top: -webkit-calc(50% - 6px);
+  top: calc(50% - 6px);
+  -webkit-transform-origin: 100%;
+  -ms-transform-origin: 100%;
+  transform-origin: 100%;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transition: all 0.5s cubic-bezier(0.22, 1.83, 0.83, 0.67);
+  transition: all 0.5s cubic-bezier(0.22, 1.83, 0.83, 0.67); }
