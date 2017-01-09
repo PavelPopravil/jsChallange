@@ -1,0 +1,50 @@
+@import 'settings';
+
+// preloader
+.preloader {}
+* {
+	box-sizing: border-box;
+}
+body {
+	
+}
+
+:root {
+	--blur: 1px;
+	--color: #ccee22;
+	--spacing: 10px;
+}
+.app {
+	display: flex;
+	flex-wrap: wrap;
+	& > * {
+		flex: 1 1 100%;
+	}
+}
+h2 {
+	text-align: center;
+	.hightlight {
+		color: var(--color);
+	}
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	& > * {
+		flex: 0 1 33.3%;
+	}
+	img {
+		margin: 30px auto;
+		padding: var(--spacing);
+		background: var(--color);
+		filter: blur(var(--blur));
+
+	}
+
+	label {
+		display: flex;
+		justify-content: center;
+		
+	}
+}
