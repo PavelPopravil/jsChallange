@@ -1,65 +1,51 @@
 function init() {
 	
-	const footballPlayers = [
-		{firstName: 'Luis', lastName: 'Figo', startCarier: 19, age: 45, stillPlay: false, team: 'Real Madrid'},
-		{firstName: 'Jack', lastName: 'Wilsere', startCarier: 19, age: 25, stillPlay: true, team: 'Arsenal'},
-		{firstName: 'Theiry', lastName: 'Henry', startCarier: 19, age: 39, stillPlay: false, team: 'Arsenal'},
-		{firstName: 'Alexis', lastName: 'Sanches', startCarier: 19, age: 27, stillPlay: true,team: 'Arsenal'}
-	];
+	const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
-	const people = ['Luis, Figo', 'Peter, Cech', 'Hectior, Bellerin', 'Scodran, Mustafi', 'Loran, Koselniy', 
-	'Nacho, Monreal', 'Alex, Iwobi', 'Lucas, Peres', 'Mesut, Ozil', 'Alexis, Sanches', 'Olivier, Giroud'];
+	const cities = [];
 
-	// filter() 
-	const doesTheyStillPlay = footballPlayers.filter(footballPlayer => (footballPlayer.stillPlay));
-	// console.table(doesTheyStillPlay);
+	fetch(endpoint)
+		.then(blob => blob.json())
+		.then(data => cities.push(...data));
 
-	// map()
-	const fullName = footballPlayers.map(footballPlayer => (`${footballPlayer.firstName} ${footballPlayer.lastName}`));
-	// console.table(fullName);
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
 
-	// sort()
-	const order = footballPlayers.sort((a, b) => a.age > b.age ? 1 : -1);
-	// console.table(order);
+	function findMatches(wordToMatch, cities) {
+		return cities.filter(place => {
 
-	// reduce()
+			const regex = new RegExp(wordToMatch, 'gi');
+			return place.city.match(regex) || place.state.match(regex);
+		});
+	}
+
+	function displayMatches() {
+		
+		const matchesArray = findMatches(this.value, cities);
+		const html = matchesArray.map(place => {
+
+			const regex = new RegExp(this.value, 'gi');
+			const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+			const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+			return `
+				<li class="output__item">
+					<span class="city">${cityName},</span> <span class="state">${stateName}</span>
+					<span class="population">${numberWithCommas(place.population)}</span>
+				</li>
+			`;
+		}).join('');
+		output.innerHTML = html;
+	}
+
+	const searchInput = document.querySelector('.search');
+	const output = document.querySelector('.output');
+
+	searchInput.addEventListener('change', displayMatches);
+	searchInput.addEventListener('keyup', displayMatches);
+
 	
-	const totalCarier = footballPlayers.reduce((total, footballPlayer) => {
-		return total + (footballPlayer.age - footballPlayer.startCarier);
-	}, 0);
-	// console.log(totalCarier);
-
-	// sort()
-	const mostLongCarier = footballPlayers.sort((a, b) => {
-
-		const longestCarier = a.age - a.startCarier;
-		const shortestCarier = b.age - b.startCarier;
-		return longestCarier > shortestCarier ? -1 : 1;
-
-	}); 
-	// console.table(mostLongCarier);
-
-	const alpha = people.sort((lastOne, nextOne) => {
-		const [aLast, aFirst] = lastOne.split(', ');
-		const [bLast, bFirst] = nextOne.split(', ');
-
-		return aFirst > bFirst ? 1 : -1;
-	});
-	console.table(alpha);
-
-	// reduce()
-	const data = ['car', 'truck', 'car', 'truck', 'bike', 'motocicle', 'motocicle'];
-
-	const transport = data.reduce((obj, item) => {	
-
-		if (!obj[item]) {
-			obj[item] = 0;
-		}
-		obj[item]++;
-		return obj;
-	}, {});
-
-	console.log(transport);
 }
 
 window.init = init();
+

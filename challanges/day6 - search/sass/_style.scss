@@ -1,0 +1,80 @@
+@import 'settings';
+
+// preloader
+.preloader {}
+* {
+	box-sizing: border-box;
+}
+body {
+	
+}
+.app {
+	height: auto;
+	min-height: 100%;
+	background-color: goldenrod;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+form.container {
+	
+	
+	width: 30%;
+	min-width: 320px;
+	position: relative;
+
+	input {
+		border-radius: 3px;
+		width: 100%;
+		border: 0;
+		padding: 20px 50px;
+		border: 10px solid #EFEFEF;
+		font-size: 35px;
+		text-align: center;
+	}
+
+	.output {
+		width: 80%;
+		list-style-type: none;
+		margin: 0px auto; padding: 0;
+	}
+
+	.output__item {
+		// display: flex;
+		// justify-content: space-between;
+		text-transform: capitalize;
+		margin-top: -2px;
+		border-bottom: 1px solid #D8D8D8;
+		transition:background 0.2s;
+  		box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+		padding: 20px;
+
+		&:nth-child(odd) {
+			transform: perspective(100px) rotateX(-3deg) translateY(3px);
+			background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+		}
+		
+		&:nth-child(even) {
+			transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+			background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+		}
+		.city {
+
+		}
+
+		.state {
+			text-align: center;
+		}
+
+		.population {
+			display: block;
+			float: right;
+		}
+
+	}
+}
+.hl {
+  background:#ffc600;
+}
