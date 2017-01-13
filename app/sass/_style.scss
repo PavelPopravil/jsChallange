@@ -1,5 +1,5 @@
 @import 'settings';
-@import url('https://fonts.googleapis.com/css?family=Coming+Soon');
+
 // preloader
 .preloader {}
 * {
@@ -10,88 +10,4 @@ body {
 }
 .app {
 
-}
-.panels {
-	display: flex;
-	overflow: hidden;
-}
-.panel {
-	height: 100vh;
-	flex: 1;
-	font-family: 'Coming Soon', cursive;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	transition: all .5s cubic-bezier(.22,1.83,.83,.67);
-	font-size: 30px;
-	
-	&.open {
-		flex: 4;
-		font-size: 50px;
-	}
-
-	& > * {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	p {
-		margin: 0;
-		color: #fff;
-		text-transform: uppercase;
-		width: 100%;
-		transition: all .5s cubic-bezier(.22,1.83,.83,.67);
-	}
-}
-.panel1 {
-	background: #282828;
-	background-image: linear-gradient(-90deg, #7B7F82 2%, #303136 100%),
-	radial-gradient(50% 116%, rgba(255,255,255,0.00) 0%, rgba(0,0,0,0.50) 100%),
-	linear-gradient(-59deg, rgba(255,255,255,0.50) 7%, rgba(87,87,87,0.50) 68%, rgba(85,85,85,0.50) 76%, rgba(0,0,0,0.50) 100%);
-	background-blend-mode: normal,multiply,multiply;
-}
-.panel2 {
-	background-color: #797572;
-	background-image: 
-	linear-gradient(-173deg, rgba(255,255,255,0.20) 0%, #000000 100%),
-	linear-gradient(72deg, rgba(255,255,255,0.25) 25%, rgba(0,0,0,0.25) 100%),
-	radial-gradient(47% 102%, rgba(255,255,255,0.50) 0%, rgba(21,24,32,0.60) 120%);
-	background-blend-mode: multiply;
-}
-.panel3 {
-	background-image: linear-gradient(-180deg, #504D48 5%, #33342F 96%);
-}
-.panel4 {
-	background: #A2A2A2;
-	background-image: radial-gradient(at 50% 90%, #B8B4B3 0%, #3B3A38 100%);
-	background-blend-mode: normal,multiply;
-}
-.panel5 {
-	background: #C2C2C2;
-	background-image: radial-gradient(at 50% 50%, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.50) 260%),
-	radial-gradient(at 61% 50%, rgba(255,255,255,0.30) 55%, rgba(0,0,0,0.50) 150%),
-	linear-gradient(to bottom left, rgba(255,255,255,0.25) 3%, rgba(0,0,0,0.25) 100%),
-	linear-gradient(-200deg, rgba(255,255,255,0.50) 13%, rgba(0,0,0,0.80) 100%);
-	background-blend-mode: normal,screen,normal,multiply;
-}
-
-.top-text {
-	transform: translateY(-100%);
-	font-size: 30px;
-}
-
-.panel.open-active .top-text {
-	transform: translateY(0);
-}
-
-.center-text {}
-
-.bottom-text {
-	transform: translateY(100%);
-	font-size: 30px;
-}
-.panel.open-active .bottom-text {
-	transform: translateY(0);
 }
