@@ -1,50 +1,60 @@
 function init() {
 	
-	const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+	const canvas = document.querySelector('#draw');
+	const ctx = canvas.getContext('2d');
 
-	const cities = [];
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight; 
 
-	fetch(endpoint)
-		.then(blob => blob.json())
-		.then(data => cities.push(...data));
+	ctx.strokeStyle = '#BADA55';
+	ctx.lineCap = 'round';
+	ctx.lineJoin = 'round';
+	ctx.lineWidth = 15;
 
-	function numberWithCommas(x) {
-		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	}
+	let isDrawing = 0;
+	let lastX = 0;
+	let lastY = 0;
+	let hue = 0;
+	let direction = true;
 
-	function findMatches(wordToMatch, cities) {
-		return cities.filter(place => {
-
-			const regex = new RegExp(wordToMatch, 'gi');
-			return place.city.match(regex) || place.state.match(regex);
-		});
-	}
-
-	function displayMatches() {
+	function draw(e) {
+		if (!isDrawing) return false;
 		
-		const matchesArray = findMatches(this.value, cities);
-		const html = matchesArray.map(place => {
+		ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+		
+		ctx.beginPath();
+		// start form
+		ctx.moveTo(lastX, lastY);
+		// go to
+		ctx.lineTo(e.offsetX, e.offsetY);
+		ctx.stroke();
+		[lastX, lastY] = [e.offsetX, e.offsetY];
+		hue++;
 
-			const regex = new RegExp(this.value, 'gi');
-			const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
-			const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
-			return `
-				<li class="output__item">
-					<span class="city">${cityName},</span> <span class="state">${stateName}</span>
-					<span class="population">${numberWithCommas(place.population)}</span>
-				</li>
-			`;
-		}).join('');
-		output.innerHTML = html;
+		// line-color
+		if (hue >= 360) {
+			hue = 0;
+		}
+
+		// line-width
+		if (ctx.lineWidth >= 50 || ctx.lineWidth <= 5) {
+			direction = !direction;
+		}
+		if (direction) {
+			ctx.lineWidth++;
+		} else {
+			ctx.lineWidth--;
+		}
 	}
 
-	const searchInput = document.querySelector('.search');
-	const output = document.querySelector('.output');
+	canvas.addEventListener('mousedown', (e) => {
+		isDrawing = true;
+		[lastX, lastY] = [e.offsetX, e.offsetY];
+	});
+	canvas.addEventListener('mousemove', draw);
+	canvas.addEventListener('mouseup', () => isDrawing = 0);
+	canvas.addEventListener('mouseout', () => isDrawing = 0);
 
-	searchInput.addEventListener('change', displayMatches);
-	searchInput.addEventListener('keyup', displayMatches);
-
-	
 }
 
 window.init = init();

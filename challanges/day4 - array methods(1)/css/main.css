@@ -58,13 +58,13 @@
 html {
   /* height hack */
   min-height: 100%;
-  height: auto !important;
+  height: auto;
   height: 100%; }
 
 body {
   /* height hack */
   min-height: 100%;
-  height: auto !important;
+  height: auto;
   height: 100%;
   /* VERTICAL RYTHM */
   /* SMOOTH FONT */

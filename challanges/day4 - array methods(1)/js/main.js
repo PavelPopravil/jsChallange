@@ -2,6 +2,8 @@
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function init() {
 
 	var footballPlayers = [{ firstName: 'Luis', lastName: 'Figo', startCarier: 19, age: 45, stillPlay: false, team: 'Real Madrid' }, { firstName: 'Jack', lastName: 'Wilsere', startCarier: 19, age: 25, stillPlay: true, team: 'Arsenal' }, { firstName: 'Theiry', lastName: 'Henry', startCarier: 19, age: 39, stillPlay: false, team: 'Arsenal' }, { firstName: 'Alexis', lastName: 'Sanches', startCarier: 19, age: 27, stillPlay: true, team: 'Arsenal' }];
@@ -70,6 +72,45 @@ function init() {
 	}, {});
 
 	console.log(transport);
+
+	// /////////////////////////////////////////////////////////////////////////////////// vol.2
+	// some()
+	var somePeople = [{ name: 'Alexey', year: 1991 }, { name: 'Pavel', year: 1992 }, { name: 'Albert', year: 1901 }, { name: 'Olya', year: 2001 }];
+
+	var comments = [{ text: 'How are you', id: 80205 }, { text: 'Fck you', id: 92232 }, { text: 'D\'ont be like that', id: 20020 }];
+
+	var isAdult = somePeople.some(function (person) {
+
+		var currentYear = new Date().getFullYear();
+		return currentYear - person.year >= 18;
+	});
+	console.log({ isAdult: isAdult });
+
+	// every
+	var allAdult = somePeople.every(function (person) {
+		var currentYear = new Date().getFullYear();
+		return currentYear - person.year >= 18;
+	});
+	console.log({ allAdult: allAdult });
+
+	// find
+	var comment = comments.find(function (comment) {
+		return comment.id === 92232;
+	});
+	console.log(comment);
+
+	// findIndex
+	var index = comments.findIndex(function (comment) {
+		return comment.id === 92232;
+	});
+	console.log(index);
+
+	// comments.splice(index, 1);
+
+	var newComments = [].concat(_toConsumableArray(comments.slice(0, index)), _toConsumableArray(comments.slice(index + 1)));
+
+	console.table(comments);
+	console.table(newComments);
 }
 
 window.init = init();

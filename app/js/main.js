@@ -1,50 +1,70 @@
 'use strict';
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function init() {
 
-	var endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+	var canvas = document.querySelector('#draw');
+	var ctx = canvas.getContext('2d');
 
-	var cities = [];
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 
-	fetch(endpoint).then(function (blob) {
-		return blob.json();
-	}).then(function (data) {
-		return cities.push.apply(cities, _toConsumableArray(data));
+	ctx.strokeStyle = '#BADA55';
+	ctx.lineCap = 'round';
+	ctx.lineJoin = 'round';
+	ctx.lineWidth = 15;
+
+	var isDrawing = 0;
+	var lastX = 0;
+	var lastY = 0;
+	var hue = 0;
+	var direction = true;
+
+	function draw(e) {
+		if (!isDrawing) return false;
+
+		ctx.strokeStyle = 'hsl(' + hue + ', 100%, 50%)';
+
+		ctx.beginPath();
+		// start form
+		ctx.moveTo(lastX, lastY);
+		// go to
+		ctx.lineTo(e.offsetX, e.offsetY);
+		ctx.stroke();
+		var _ref = [e.offsetX, e.offsetY];
+		lastX = _ref[0];
+		lastY = _ref[1];
+
+		hue++;
+
+		// line-color
+		if (hue >= 360) {
+			hue = 0;
+		}
+
+		// line-width
+		if (ctx.lineWidth >= 50 || ctx.lineWidth <= 5) {
+			direction = !direction;
+		}
+		if (direction) {
+			ctx.lineWidth++;
+		} else {
+			ctx.lineWidth--;
+		}
+	}
+
+	canvas.addEventListener('mousedown', function (e) {
+		isDrawing = true;
+		var _ref2 = [e.offsetX, e.offsetY];
+		lastX = _ref2[0];
+		lastY = _ref2[1];
 	});
-
-	function numberWithCommas(x) {
-		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	}
-
-	function findMatches(wordToMatch, cities) {
-		return cities.filter(function (place) {
-
-			var regex = new RegExp(wordToMatch, 'gi');
-			return place.city.match(regex) || place.state.match(regex);
-		});
-	}
-
-	function displayMatches() {
-		var _this = this;
-
-		var matchesArray = findMatches(this.value, cities);
-		var html = matchesArray.map(function (place) {
-
-			var regex = new RegExp(_this.value, 'gi');
-			var cityName = place.city.replace(regex, '<span class="hl">' + _this.value + '</span>');
-			var stateName = place.state.replace(regex, '<span class="hl">' + _this.value + '</span>');
-			return '\n\t\t\t\t<li class="output__item">\n\t\t\t\t\t<span class="city">' + cityName + ',</span> <span class="state">' + stateName + '</span>\n\t\t\t\t\t<span class="population">' + numberWithCommas(place.population) + '</span>\n\t\t\t\t</li>\n\t\t\t';
-		}).join('');
-		output.innerHTML = html;
-	}
-
-	var searchInput = document.querySelector('.search');
-	var output = document.querySelector('.output');
-
-	searchInput.addEventListener('change', displayMatches);
-	searchInput.addEventListener('keyup', displayMatches);
+	canvas.addEventListener('mousemove', draw);
+	canvas.addEventListener('mouseup', function () {
+		return isDrawing = 0;
+	});
+	canvas.addEventListener('mouseout', function () {
+		return isDrawing = 0;
+	});
 }
 
 window.init = init();

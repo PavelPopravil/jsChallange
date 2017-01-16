@@ -60,6 +60,55 @@ function init() {
 	}, {});
 
 	console.log(transport);
+
+	// /////////////////////////////////////////////////////////////////////////////////// vol.2
+	// some()
+	const somePeople = [
+		{name: 'Alexey', year: 1991},
+		{name: 'Pavel', year: 1992},
+		{name: 'Albert', year: 1901},
+		{name: 'Olya', year: 2001}
+	]
+
+	const comments = [
+		{text: 'How are you', id: 80205},
+		{text: 'Fck you', id: 92232},
+		{text: 'D\'ont be like that', id: 20020}
+	];
+
+	const isAdult = somePeople.some(person => {
+		
+		const currentYear = new Date().getFullYear();
+		return (currentYear - person.year >= 18);
+		
+	});
+	console.log({isAdult});
+
+	// every
+	const allAdult = somePeople.every(person => {
+		const currentYear = new Date().getFullYear();
+		return (currentYear - person.year >= 18);	
+	});
+	console.log({allAdult});
+
+	// find
+	const comment = comments.find(comment => (comment.id === 92232));
+	console.log(comment);
+
+	// findIndex
+	const index = comments.findIndex(comment => (comment.id === 92232));
+	console.log(index);
+
+	// comments.splice(index, 1);
+
+	const newComments = [
+		...comments.slice(0, index),
+		...comments.slice(index + 1)
+	];
+
+	console.table(comments);
+	console.table(newComments);
 }
 
 window.init = init();
+
