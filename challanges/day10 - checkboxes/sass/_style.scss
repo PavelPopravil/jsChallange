@@ -1,0 +1,52 @@
+@import 'settings';
+
+// preloader
+.preloader {}
+* {
+	box-sizing: border-box;
+}
+body {
+	
+}
+.app {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background-color: goldenrod;	
+}
+.container {
+	overflow: hidden;
+	min-width: 400px;
+	background-color: #fff;
+	border-radius: 7px;
+	box-shadow: 3px 3px 0 rgba(#000, 0.4);
+
+	
+}
+.item {
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgba(#000, 0.4);
+	input[type="checkbox"] {
+		width: 10%;
+		outline: none;
+	}
+	
+	input[type="checkbox"]:checked + label {
+		background-color: #eee;
+		text-decoration: line-through;
+	}
+
+	label {
+		padding: 15px 10px;
+		flex: 1;
+		width: 90%;
+		border-left: 1px solid rgba(#000, 0.4);
+	}
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}

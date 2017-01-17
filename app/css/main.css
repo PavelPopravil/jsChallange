@@ -4,40 +4,20 @@
   height: 1em;
   fill: currentColor; }
 
-.icon-dribble__icon {
-  font-size: 3.75rem;
+.icon-backward2 {
+  font-size: 3.2rem;
   width: 1em; }
 
-.icon-facebook__icon {
-  font-size: 3.75rem;
+.icon-forward3 {
+  font-size: 3.2rem;
   width: 1em; }
 
-.icon-github__icon {
-  font-size: 3.75rem;
+.icon-pause2 {
+  font-size: 3.2rem;
   width: 1em; }
 
-.icon-instagram__icon {
-  font-size: 3.75rem;
-  width: 1em; }
-
-.icon-mail__icon {
-  font-size: 1.5rem;
-  width: 1.5em; }
-
-.icon-phone__icon {
-  font-size: 1.75rem;
-  width: 1em; }
-
-.icon-services__bulb {
-  font-size: 7rem;
-  width: 0.85714em; }
-
-.icon-services__cloud-small {
-  font-size: 4.5rem;
-  width: 1.05556em; }
-
-.icon-twiter__icon {
-  font-size: 3.75rem;
+.icon-play3 {
+  font-size: 3.2rem;
   width: 1em; }
 
 /* VARIABLES */
@@ -146,3 +126,109 @@ textarea {
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
+
+.app {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  background: #989898;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), to(rgba(0, 0, 0, 0.15))), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), -webkit-radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%);
+  background-blend-mode: multiply,multiply; }
+
+.player {
+  position: relative; }
+
+.player__controls {
+  width: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .player__controls .progress-bar {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    width: 100%;
+    height: 13px;
+    background-color: goldenrod; }
+  .player__controls .player__button {
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 0;
+    -webkit-flex-basis: 30px;
+    -ms-flex-preferred-size: 30px;
+    flex-basis: 30px; }
+    .player__controls .player__button svg {
+      fill: #fff;
+      font-size: 1.5rem;
+      height: 1.5rem; }
+  .player__controls input[type="range"] {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+    margin-right: 5px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer; }
+    .player__controls input[type="range"]:last-child {
+      margin-right: 0; }
+    .player__controls input[type="range"]:focus {
+      outline: none; }
+    .player__controls input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background-color: goldenrod;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      margin-top: -3px; }
+    .player__controls input[type="range"]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 10px;
+      background-color: #eee; }

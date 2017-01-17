@@ -36,7 +36,7 @@
     <!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="css/old_ie.css" /><![endif]-->
     <!--[if lt IE 7 ]><script type="text/javascript">window.location.href="ie6_close/index_ru.html";</script><![endif]-->
 
-    <title>Canvas</title>
+    <title>Checkboxes</title>
 </head>
 <body>
     <!--[if lt IE 10]>
@@ -49,7 +49,38 @@
 
     <div class="app">
       
-        <canvas id="draw"></canvas>
+        <div class="player">
+          
+          <video  src="videoplayback.mp4"></video>
+          
+          <div class="player__controls">
+            <div class="progress-bar">
+              <div class="progress-bar__filled"></div>
+            </div>
+            <button class="player__button">
+              <svg class="icon-play3">
+                <use xlink:href="img/sprite.svg#play3"></use>
+              </svg>          
+            </button>
+            <input name="volume" type="range">
+            <input name="speed" type="range">
+            <!-- backward -->
+            <button class="player__button">
+              <svg class="icon-backward2">
+                <use xlink:href="img/sprite.svg#backward2"></use>
+              </svg> 
+              10s
+            </button>
+            <!-- forward -->
+            <button class="player__button">
+              25s
+              <svg class="icon-forward3 ">
+                <use xlink:href="img/sprite.svg#forward3"></use>
+              </svg> 
+            </button>
+          </div>
+        </div>
+
     </div>
      
 
