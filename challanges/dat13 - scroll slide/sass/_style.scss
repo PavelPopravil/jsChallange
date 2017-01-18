@@ -1,0 +1,65 @@
+@import 'settings';
+
+// preloader
+.preloader {}
+* {
+	box-sizing: border-box;
+}
+body {
+	
+}
+.clearfix {
+	&:after, &:before {
+		content: '';
+	}
+	&:after {
+		display: table;
+		clear: both;
+	}
+}
+.align-left {
+	float: left;
+	margin: 10px 0;
+	margin-right: 20px;
+	&.slide {
+		transform: translateX(-30%);
+	}
+}
+.align-right {
+	float: right;
+	margin: 10px 0;
+	margin-left: 20px;
+	&.slide {
+		transform: translateX(30%);
+	}
+}
+.app {
+	min-height: 100%;
+	height: auto;
+	background-color: goldenrod;
+	padding: 40px 0;
+}
+.container {
+	text-align: justify;
+	width: 65%;
+	margin: 0px auto 0;
+	background-color: #fff;
+	padding: 20px;
+	box-shadow: 0 0 5px 5px rgba(#000, 0.2);
+	@extend .clearfix;
+}
+h1 {
+	
+}
+img {
+	width: 50%;
+	height: auto;
+}
+.slide {
+	opacity: 0;
+	transition: all .5s;
+	&.active {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

@@ -1,0 +1,108 @@
+@import 'settings';
+
+// preloader
+.preloader {}
+* {
+	box-sizing: border-box;
+}
+body {
+	
+}
+.app {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background: #989898;
+    background: 
+        linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%),
+        radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%);
+    background-blend-mode: multiply,multiply;
+}
+
+.player {
+	position: relative;
+	overflow: hidden;
+	
+
+	&:hover {
+		.player__controls {
+			bottom: 0;
+		}
+	}
+}
+.player__controls {
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 5px;
+	transition: all 0.5s ease;
+
+	.progress-bar {
+		cursor: pointer;
+		flex: 1 1 100%;
+		width: 100%;
+		height: 13px;
+		background-color: rgba(#000, 0.6);
+		margin-bottom: 5px;
+		&__filled {
+			background-color: goldenrod;
+			width: 0%;
+			height: 100%;
+		}
+	}
+
+	.player__button {
+		background-color: transparent;
+		border: 0;
+		cursor: pointer;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 10px;
+		flex-basis: 30px;
+		svg {
+			fill: #fff;
+			font-size: 1.5rem;
+			height: 1rem;
+		}
+	}
+
+	input[type="range"] {
+		flex: 1;
+		position: relative;
+		margin-right: 5px;
+		-webkit-appearance: none;
+		background-color: transparent;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 16px; height: 16px;
+			background-color: goldenrod;
+			border-radius: 50%;
+			margin-top: -3px;
+		}
+		&::-webkit-slider-runnable-track {
+			width: 100%;
+			height: 10px;
+			background-color: #eee;
+		}
+	}
+}
+

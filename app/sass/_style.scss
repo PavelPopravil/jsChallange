@@ -8,85 +8,58 @@
 body {
 	
 }
+.clearfix {
+	&:after, &:before {
+		content: '';
+	}
+	&:after {
+		display: table;
+		clear: both;
+	}
+}
+.align-left {
+	float: left;
+	margin: 10px 0;
+	margin-right: 20px;
+	&.slide {
+		transform: translateX(-30%);
+	}
+}
+.align-right {
+	float: right;
+	margin: 10px 0;
+	margin-left: 20px;
+	&.slide {
+		transform: translateX(30%);
+	}
+}
 .app {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	background: #989898;
-    background: 
-        linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%),
-        radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%);
-    background-blend-mode: multiply,multiply;
+	min-height: 100%;
+	height: auto;
+	background-color: goldenrod;
+	padding: 40px 0;
 }
-
-.player {
-	position: relative;
+.container {
+	text-align: justify;
+	width: 65%;
+	margin: 0px auto 0;
+	background-color: #fff;
+	padding: 20px;
+	box-shadow: 0 0 5px 5px rgba(#000, 0.2);
+	@extend .clearfix;
 }
-.player__controls {
-	width: 100%;
-	position: absolute;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+h1 {
 	
-	.progress-bar {
-		flex: 1 1 100%;
-		width: 100%;
-		height: 13px;
-		background-color: goldenrod;
-
-		&__filled {}
-	}
-
-	.player__button {
-		background-color: transparent;
-		border: 0;
-		outline: none;
-		cursor: pointer;
-		color: #fff;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0;
-		flex-basis: 30px;
-		svg {
-			fill: #fff;
-			font-size: 1.5rem;
-			height: 1.5rem;
-		}
-	}
-
-	input[type="range"] {
-		flex: 1;
-		position: relative;
-		margin-right: 5px;
-		-webkit-appearance: none;
-		background-color: transparent;
-		display: flex;
-		align-items: center;
-		cursor: pointer;
-
-		&:last-child {
-			margin-right: 0;
-		}
-
-		&:focus {
-			outline: none;
-		}
-
-		&::-webkit-slider-thumb {
-			-webkit-appearance: none;
-			width: 16px; height: 16px;
-			background-color: goldenrod;
-			border-radius: 50%;
-			margin-top: -3px;
-		}
-		&::-webkit-slider-runnable-track {
-			width: 100%;
-			height: 10px;
-			background-color: #eee;
-		}
+}
+img {
+	width: 50%;
+	height: auto;
+}
+.slide {
+	opacity: 0;
+	transition: all .5s;
+	&.active {
+		opacity: 1;
+		transform: translateX(0);
 	}
 }
-
