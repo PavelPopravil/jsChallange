@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Padauk");
 .icon {
   display: inline-block;
   width: 1em;
@@ -127,56 +128,97 @@ textarea {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.clearfix:after, .container:after, .clearfix:before, .container:before {
-  content: ''; }
-
-.clearfix:after, .container:after {
-  display: table;
-  clear: both; }
-
-.align-left {
-  float: left;
-  margin: 10px 0;
-  margin-right: 20px; }
-  .align-left.slide {
-    -webkit-transform: translateX(-30%);
-    -ms-transform: translateX(-30%);
-    transform: translateX(-30%); }
-
-.align-right {
-  float: right;
-  margin: 10px 0;
-  margin-left: 20px; }
-  .align-right.slide {
-    -webkit-transform: translateX(30%);
-    -ms-transform: translateX(30%);
-    transform: translateX(30%); }
+body {
+  font-family: 'Padauk', sans-serif; }
 
 .app {
-  min-height: 100%;
   height: auto;
-  background-color: goldenrod;
-  padding: 40px 0; }
+  min-height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: #fff url(../img/restaurant.jpg) center no-repeat;
+  background-size: cover; }
 
 .container {
-  text-align: justify;
-  width: 65%;
-  margin: 0px auto 0;
-  background-color: #fff;
+  background-color: rgba(238, 238, 238, 0.9);
   padding: 20px;
-  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2); }
+  -webkit-box-shadow: 5px 5px 3px rgba(255, 255, 255, 0.5);
+  box-shadow: 5px 5px 3px rgba(255, 255, 255, 0.5); }
 
-img {
-  width: 50%;
-  height: auto; }
+.title {
+  margin-top: 0;
+  text-align: center;
+  text-transform: uppercase; }
 
-.slide {
-  opacity: 0;
-  -webkit-transition: all .5s;
-  transition: all .5s; }
-  .slide.active {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    transform: translateX(0); }
+.product-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px; }
+  .product-list li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    font-size: 20px; }
+    .product-list li input[type="checkbox"] {
+      display: none; }
+      .product-list li input[type="checkbox"] + label:before {
+        position: relative;
+        margin-right: 20px;
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.4); }
+      .product-list li input[type="checkbox"]:checked + label:before {
+        -webkit-box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 10px rgba(0, 0, 0, 0.4);
+        box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 10px rgba(0, 0, 0, 0.4); }
+    .product-list li label {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center; }
+
+.add-items {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .add-items__text {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 65%;
+    -ms-flex: 0 1 65%;
+    flex: 0 1 65%;
+    margin-right: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
+  .add-items__submit {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 35%;
+    -ms-flex: 0 1 35%;
+    flex: 0 1 35%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
