@@ -1,0 +1,28 @@
+@import 'settings';
+@import url('https://fonts.googleapis.com/css?family=Padauk');
+// preloader
+.preloader {}
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Padauk', sans-serif;
+}
+.app {
+	height: auto;
+	min-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 400px;
+}
+h1 {
+	font-size: 50px;
+	text-shadow: 5px 5px 0 rgba(#000, 0.4);
+}

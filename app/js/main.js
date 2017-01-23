@@ -2,46 +2,21 @@
 
 function init() {
 
-	var productList = document.querySelector('.product-list');
-	var addItems = document.querySelector('.add-items');
-	var items = JSON.parse(localStorage.getItem('items')) || [];
+	var clubs = ['The Arsenal', 'The Chealse', 'Tothenshit', 'Manchester United', 'The Manchester City', 'A Bernly', 'An Yotford', 'Then Liecter', 'The West Hame', 'An Everton'];
 
-	function addProduct(e) {
-		e.preventDefault();
-		var text = this.querySelector('[name="item"]').value;
+	function optimizeName(clubName) {
+		return clubName.replace(/^(a |an |the )/i, '').trim();
+	}
 
-		var item = {
-			text: text,
-			status: false
-		};
-		items.push(item);
-		printTheList(items, productList);
-		localStorage.setItem('items', JSON.stringify(items));
-		this.reset();
-	};
+	var sortedClubs = clubs.sort(function (a, b) {
+		return optimizeName(a) > optimizeName(b) ? 1 : -1;
+	});
 
-	function printTheList() {
-		var plates = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-		var platesList = arguments[1];
+	var list = document.querySelector('.list');
 
-		platesList.innerHTML = plates.map(function (plate, i) {
-			return '\n\t\t\t\t<li>\n\t\t\t\t\t<input type="checkbox" data-index="' + i + '" id="item' + i + '" ' + (plate.done ? 'checked' : '') + ' >\n\t\t\t\t\t<label for="item' + i + '">' + plate.text + '</label>\n\t\t\t\t</li>\n\t\t\t';
-		}).join('');
-	};
-
-	function toggleCheck(e) {
-
-		var el = e.target;
-		if (!el.matches('input')) return;
-		var index = el.dataset.index;
-		items[index].done = !items[index].done;
-		localStorage.setItem('items', JSON.stringify(items));
-		printTheList(items, productList);
-	};
-
-	addItems.addEventListener('submit', addProduct);
-	productList.addEventListener('click', toggleCheck);
-	printTheList(items, productList);
+	list.innerHTML = sortedClubs.map(function (club) {
+		return '<li>' + club + '</li>';
+	}).join('');
 }
 
 window.init = init();

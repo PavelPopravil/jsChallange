@@ -126,7 +126,7 @@ gulp.task('watch', ['browser-sync', 'minify', 'scripts', 'svgSpriteBuild'], func
   gulp.watch('app/sass/**/*.scss', ['minify']);
   gulp.watch("app/*.html", browserSync.reload);
   gulp.watch("app/img/icons_svg/*.svg", ['svgSpriteBuild'], browserSync.reload);
-  gulp.watch("app/js/es6/*.js", ['scripts']);
+  gulp.watch("app/js/es6/*.js", ['scripts'], browserSync.reload);
   gulp.watch("app/js/*.js", browserSync.reload);
 });
 
