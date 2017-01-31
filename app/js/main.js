@@ -2,34 +2,30 @@
 
 function init() {
 
-	var slider = document.querySelector('.slider');
-	var isDown = false;
-	var startX = void 0;
-	var scrollLeft = void 0;
+	var video = document.querySelector('video');
+	var speed = document.querySelector('.speed');
+	var speedBar = document.querySelector('.speed__bar');
 
-	slider.addEventListener('mousedown', function (e) {
-		isDown = true;
-		slider.classList.add('active');
-		startX = e.pageX - slider.offsetLeft;
-		scrollLeft = slider.scrollLeft;
-	});
+	function toggleSpeed(e) {
 
-	slider.addEventListener('mouseleave', function () {
-		isDown = false;
-		slider.classList.remove('active');
-	});
+		var y = e.pageY - speed.offsetTop;
+		var percent = y / speed.offsetHeight;
+		var min = 0.4;
+		var max = 4;
+		var height = Math.round(percent * 100) + '%';
+		var playBackRate = percent * (max - min) + min;
 
-	slider.addEventListener('mouseup', function () {
-		isDown = false;
-		slider.classList.remove('active');
-	});
+		speedBar.style.height = height;
+		speedBar.textContent = playBackRate.toFixed(1) + 'x';
+		video.playbackRate = playBackRate.toFixed(1);
+	};
 
-	slider.addEventListener('mousemove', function (e) {
-		if (!isDown) return;
-		var x = e.pageX - slider.offsetLeft;
-		var walk = x - startX;
-		slider.scrollLeft = scrollLeft - walk;
-	});
+	(function setStartSpeed() {
+
+		speedBar.textContent = video.playbackRate + 'x';
+	})();
+
+	speed.addEventListener('mousemove', toggleSpeed);
 }
 
 window.init = init();

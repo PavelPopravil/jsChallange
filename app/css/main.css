@@ -156,38 +156,49 @@ body {
   background-color: #DFE3E4;
   background-blend-mode: color-burn, screen, color-burn; }
 
-.slider {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-  white-space: nowrap;
-  position: relative; }
-  .slider.active {
-    cursor: -webkit-grabbing;
-    cursor: grabbing; }
+.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 400px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
 
-.slider__item {
-  margin: 0;
-  display: block;
-  margin-right: 20px;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 0 -webkit-calc(100% / 8);
-  -ms-flex: 1 0 calc(100% / 8);
-  flex: 1 0 calc(100% / 8);
-  border: 2px solid #3ba8c0;
-  overflow: hidden; }
-  .slider__item:last-child {
-    margin-right: 0; }
-  .slider__item img {
-    height: 100%;
+video {
+  height: 400px; }
+
+.speed {
+  height: 100%;
+  width: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-left: 50px; }
+  .speed__bar {
+    background: -webkit-gradient(linear, left top, left bottom, from(#DA22FF), to(#9733EE));
+    background: -webkit-linear-gradient(top, #DA22FF, #9733EE);
+    background: linear-gradient(to bottom, #DA22FF, #9733EE);
+    height: 16%;
     width: 100%;
-    pointer-events: none; }
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px; }

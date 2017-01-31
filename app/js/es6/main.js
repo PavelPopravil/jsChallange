@@ -1,34 +1,30 @@
 function init() {
 
-	const slider = document.querySelector('.slider');
-	let isDown = false;
-	let startX;
-	let scrollLeft;
+	const video = document.querySelector('video');
+	const speed = document.querySelector('.speed');
+	const speedBar = document.querySelector('.speed__bar');
 
-	slider.addEventListener('mousedown', (e) => {
-		isDown = true;
-		slider.classList.add('active');
-		startX = e.pageX - slider.offsetLeft;
-		scrollLeft = slider.scrollLeft;
-	});
+	function toggleSpeed(e) {
 
-	slider.addEventListener('mouseleave', () => {
-		isDown = false;
-		slider.classList.remove('active');
-	});
+		const y = e.pageY - speed.offsetTop;
+		const percent = y / speed.offsetHeight;
+		const min = 0.4;
+		const max = 4;
+		const height = `${Math.round(percent * 100)}%`;
+		const playBackRate = percent * (max - min) + min;
 
-	slider.addEventListener('mouseup', () => {
-		isDown = false;
-		slider.classList.remove('active');
-	});
+		speedBar.style.height = height;
+		speedBar.textContent = `${playBackRate.toFixed(1)}x`
+		video.playbackRate = playBackRate.toFixed(1);
+	};
 
-	slider.addEventListener('mousemove', (e) => {
-		if (!isDown) return;
-		const x = e.pageX - slider.offsetLeft;
-		const walk = x - startX;
-		slider.scrollLeft = scrollLeft - walk;
-	});
+	(function setStartSpeed() {
 
+		speedBar.textContent = `${video.playbackRate}x`
+
+	}());
+
+	speed.addEventListener('mousemove', toggleSpeed);
 
 }
 

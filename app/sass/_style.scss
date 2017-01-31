@@ -22,31 +22,31 @@ body {
         background-color: #DFE3E4;
         background-blend-mode: color-burn, screen, color-burn;
 }
-.slider {
-	display: inline-flex;
-	overflow-x: scroll;
-  	overflow-y: hidden;
-  	user-select: none;
-  	transition: all .5s ease;
-  	white-space: nowrap;
-	position: relative;
-  	&.active {
-  		cursor: grabbing;
-  	}
+.container {
+	display: flex;
+	height: 400px;
+	align-items:center;
+	justify-content: center;
 }
-.slider__item {
-	margin: 0;
-	display: block;
-	margin-right: 20px;
-	flex: 1 0 calc(100% / 8);
-	border: 2px solid #3ba8c0;
-	overflow: hidden;
-	&:last-child {
-		margin-right: 0;
-	}
-	img {
-		height: 100%;
+video {
+	height: 400px;
+}
+.speed {
+	height: 100%;
+	width: 50px;
+	background-color: rgba(#000, 0.2);
+	border-radius: 30px;
+	overflow:hidden;
+	margin-left: 50px;
+
+	&__bar {
+		background: linear-gradient(to bottom, #DA22FF , #9733EE);
+		height: 16%;
 		width: 100%;
-		pointer-events: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: bold;
+		font-size: 18px;
 	}
 }
